@@ -14,7 +14,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='GraphDenoising')
     # model name
     parser.add_argument('--model', type=str, required=True, default='DropEdge',
-                        help='model name, options: [DropEdge, RGIB, Edmot]')
+                        help='model name, options: [DropEdge, RGIB, Edmot, GIB-Cat, GIB-Bern]')
 
     
     
@@ -103,6 +103,12 @@ if __name__ == '__main__':
     parser.add_argument('--scheduler_param', type=float, default=1.0)
     parser.add_argument('--search_scheduler',  action='store_true')
     parser.add_argument('--search_iteration', type=int, default=0)
+
+    # GIB
+    parser.add_argument('--T', type=int, default=2, help='The limitation of local dependency.')
+    parser.add_argument('--k', type=int, default=2, help='The number of sampled neighbors for GIB-Cat.')
+    parser.add_argument('--activation', type=str, default='relu', help='Activation function.')
+    parser.add_argument('--num_layers', type=int, default=2, help='Number of layers.')
 
     # Edmot
     parser.add_argument("--edge-path",nargs="?",default="./input/cora_edges.csv",

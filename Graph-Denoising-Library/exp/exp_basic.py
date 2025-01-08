@@ -1,7 +1,7 @@
 import os
 import torch
 
-from models import DropEdge, RGIB, Edmot
+from models import DropEdge, RGIB, Edmot, GIB
 
 
 # 任务基类
@@ -12,7 +12,9 @@ class Exp_Basic(object):
         self.model_dict = {
             'DropEdge': DropEdge,
             'RGIB' : RGIB,
-            'Edmot' : Edmot
+            'Edmot' : Edmot,
+            'GIB-Cat': GIB.GIB_Cat,
+            'GIB-Bern': GIB.GIB_Bern
         }
 
         self.device = self._acquire_device()
